@@ -1,0 +1,38 @@
+{
+	"kind": "identitytoolkit#DownloadAccountResponse",
+	"users": [
+		{
+			"localId": "YgRaeJye4kPkQgwqswFNl6iQkdwy",
+			"createdAt": "1717580132880",
+			"lastLoginAt": "1719309342424",
+			"displayName": "",
+			"photoUrl": "",
+			"passwordHash": "fakeHash:salt=fakeSalt6iOBOZCWJDw5lZWv5QR5:password=FOR_TESTING_ONLY",
+			"salt": "fakeSalt6iOBOZCWJDw5lZWv5QR5",
+			"passwordUpdatedAt": 1719309340205,
+			"providerUserInfo": [
+				{
+					"providerId": "password",
+					"email": "admin@wevis.info",
+					"federatedId": "admin@wevis.info",
+					"rawId": "admin@wevis.info",
+					"displayName": "",
+					"photoUrl": ""
+				}
+			],
+			"validSince": "1719309340",
+			"email": "admin@wevis.info",
+			"emailVerified": true,
+			"disabled": false,
+			"lastRefreshAt": "2024-06-25T09:55:42.424Z"
+		},
+		{
+			"localId": "yWNN2CxvXa8MkM9SOf5t7bLHSLTE",
+			"createdAt": "1718016235989",
+			"lastLoginAt": "1718016235989",
+			"validSince": "1719309340",
+			"emailVerified": false,
+			"disabled": false
+		}
+	]
+}

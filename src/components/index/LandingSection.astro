@@ -1,0 +1,100 @@
+---
+import Config from '../../../e-initiative.config.mjs';
+import SectionContainer from '../SectionContainer.astro';
+import UpdateTimestamp from '../UpdateTimestamp.svelte';
+import PenIcon from '../icons/PenIcon.svelte';
+import LocationIcon from '../icons/LocationIcon.svelte';
+import TableIcon from '../icons/TableIcon.svelte';
+import { dayElapsed, isCampaignEnded } from '../../utils/campaign';
+import { countSubmittedDocuments } from '../../utils/firebase';
+import { countOfflineSignatures } from '../../utils/sheets';
+import Sharer from '../Sharer.svelte';
+
+const documentCount =
+	(await countSubmittedDocuments()) +
+	(Config.sheets?.enableOfflineSignature ? await countOfflineSignatures() : 0);
+---
+
+<SectionContainer
+	outerClass="min-h-screen justify-center"
+	innerClass="flex flex-col gap-16 text-center md:flex-row"
+	hideNavbar
+>
+	<div class="flex flex-col items-center justify-center">
+		<h1 class="heading-responsive-03">{Config.metadata.title}</h1>
+		<p>{Config.metadata.description}</p>
+		<img
+			class="mt-4 w-[180px] max-w-[280px] md:w-[280px]"
+			src="https://placehold.co/280x280"
+			alt=""
+		/>
+	</div>
+	<div class="my-auto flex w-full max-w-md flex-col space-y-2">
+		<p class="mt-1">
+			ต้องการ {Config.petition.expectedSignatures.toLocaleString()} รายชื่อ
+		</p>
+
+		<div class="flex flex-col gap-2">
+			<div>
+				<p class="heading-responsive-02">
+					ลงแล้ว {documentCount.toLocaleString()} คน
+				</p>
+				<p>
+					{dayElapsed > 0 && <>เหลือเวลาอีก {dayElapsed} วัน</>}
+					(ภายใน {
+						Config.petition.endDate.toLocaleDateString('TH-th', {
+							dateStyle: 'medium',
+						})
+					})
+				</p>
+			</div>
+			<UpdateTimestamp client:load date={new Date()} />
+			{
+				isCampaignEnded ? (
+					<div class="flex flex-row items-center gap-2">
+						<div class="h-[2px] flex-1 bg-secondary" />
+						<p class="font-bold text-secondary">ปิดรับลงชื่อแล้ว</p>
+						<div class="h-[2px] flex-1 bg-secondary" />
+					</div>
+				) : (
+					<div class="space-y-2">
+						<a
+							href="#sign"
+							class="heading-03 btn btn-primary btn-block text-base-100"
+						>
+							ลงชื่อเลย
+							<PenIcon />
+						</a>
+						{Config.sheets?.enableLocations && (
+							<a
+								href="locations"
+								class="heading-03 btn btn-secondary btn-block"
+							>
+								ดูสถานที่ลงชื่อ
+								<LocationIcon />
+							</a>
+						)}
+						{Config.petition.offline?.volunteer && (
+							<a
+								href="#volunteer"
+								class="heading-03 btn btn-secondary btn-block"
+							>
+								อาสาล่ารายชื่อ
+								<TableIcon />
+							</a>
+						)}
+					</div>
+				)
+			}
+		</div>
+
+		<a class="heading-03 btn btn-link btn-block hover:text-accent"
+			>ทำไมต้องลงชื่อ</a
+		>
+
+		<div class="flex items-center justify-center gap-3 text-primary">
+			<span class="body-01">แชร์</span>
+			<Sharer />
+		</div>
+	</div>
+</SectionContainer>

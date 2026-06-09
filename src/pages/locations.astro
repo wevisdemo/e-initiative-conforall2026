@@ -1,0 +1,35 @@
+---
+import SectionContainer from '../components/SectionContainer.astro';
+import LocationList from '../components/locations/LocationList.svelte';
+import Body from '../layouts/Body.astro';
+import { getLocations } from '../utils/sheets';
+import UpdateTimestamp from '../components/UpdateTimestamp.svelte';
+import BackHomeLink from '../components/BackHomeLink.astro';
+import Config from '../../e-initiative.config.mjs';
+
+if (!Config.sheets?.enableLocations) {
+	return new Response(null, {
+		status: 404,
+		statusText: 'Not found',
+	});
+}
+
+const { totalLocations, locationByProvinces } = await getLocations();
+---
+
+<Body>
+	<SectionContainer
+		outerClass="relative"
+		innerClass="flex w-full max-w-screen-md flex-col gap-8"
+	>
+		<BackHomeLink class="absolute left-1 top-3" />
+
+		<h1 class="heading-responsive-02 text-center leading-none">
+			มีจุดตั้งโต๊ะทั้งหมด {totalLocations} จุด ใน {locationByProvinces.length}
+			จังหวัด
+		</h1>
+		<UpdateTimestamp client:load date={new Date()} class="text-center" />
+
+		<LocationList {locationByProvinces} />
+	</SectionContainer>
+</Body>
