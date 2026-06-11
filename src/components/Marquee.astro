@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../utils/url';
+
 interface Props {
 	src?: string;
 	speed?: string;
@@ -7,7 +9,7 @@ interface Props {
 }
 
 const {
-	src = '/public/image/marquee_animation.svg',
+	src = 'image/marquee_animation.svg',
 	speed = '20s',
 	height = '50px',
 	class: className = '',
@@ -20,8 +22,8 @@ const {
 	style={`--marquee-speed:${speed}; --marquee-height:${height}`}
 >
 	<div class="marquee__track">
-		<img class="marquee__img" src={src} alt="" />
-		<img class="marquee__img" src={src} alt="" />
+		<img class="marquee__img" src={withBase(src)} alt="" />
+		<img class="marquee__img" src={withBase(src)} alt="" />
 	</div>
 </div>
 

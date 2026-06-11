@@ -1,6 +1,7 @@
 ---
 import SectionContainer from '../SectionContainer.astro';
 import DocumentIcon from '../icons/DocumentIcon.svelte';
+import { withBase } from '../../utils/url';
 ---
 
 <SectionContainer
@@ -15,7 +16,7 @@ import DocumentIcon from '../icons/DocumentIcon.svelte';
 		</h2>
 		<img
 			class="w-[220px] max-w-[305px] md:w-[305px]"
-			src="/public/image/detail-1.svg"
+			src={withBase('image/detail-1.svg')}
 			alt=""
 		/>
 		<div class="flex flex-col items-center gap-[5px]">
@@ -45,7 +46,11 @@ import DocumentIcon from '../icons/DocumentIcon.svelte';
 		<div
 			class="flex w-full flex-col items-center gap-[20px] rounded-[20px] bg-info px-[10px] py-10 md:px-[50px]"
 		>
-			<img class="w-[78px] md:w-[130px]" src="/public/image/start.svg" alt="" />
+			<img
+				class="w-[78px] md:w-[130px]"
+				src={withBase('image/start.svg')}
+				alt=""
+			/>
 			<div>
 				<h3 class="heading-responsive-03 text-secondary">การเลือกผู้ร่าง</h3>
 				<h3 class="heading-responsive-02 text-secondary">รัฐธรรมนูญฉบับใหม่</h3>
@@ -144,7 +149,7 @@ import DocumentIcon from '../icons/DocumentIcon.svelte';
 		>
 			<img
 				class="w-[95px] md:w-[126px]"
-				src="/public/image/middle.svg"
+				src={withBase('image/middle.svg')}
 				alt=""
 			/>
 			<div>
@@ -217,7 +222,7 @@ import DocumentIcon from '../icons/DocumentIcon.svelte';
 					<div
 						class="flex w-full items-center justify-center gap-[5px] rounded-[10px] bg-base-100 py-[10px]"
 					>
-						<img class="w-[15px]" src="/public/image/x.svg" alt="" />
+						<img class="w-[15px]" src={withBase('image/x.svg')} alt="" />
 						<p class="body-03-semibold text-secondary">
 							ต้องไม่เกี่ยวข้องกับคณะรัฐประหาร
 						</p>
@@ -246,7 +251,7 @@ import DocumentIcon from '../icons/DocumentIcon.svelte';
 		<div
 			class="flex w-full flex-col items-center gap-[20px] rounded-[20px] bg-info px-[10px] py-10 md:px-[50px]"
 		>
-			<img class="w-[60px]" src="/public/image/check.svg" alt="" />
+			<img class="w-[60px]" src={withBase('image/check.svg')} alt="" />
 			<div>
 				<h3 class="heading-responsive-03 text-secondary">การให้ความเห็นชอบ</h3>
 				<h3 class="heading-responsive-02 text-secondary">
@@ -257,7 +262,7 @@ import DocumentIcon from '../icons/DocumentIcon.svelte';
 			<div class="flex w-full flex-col items-center">
 				<img
 					class="z-20 -mb-[12px] ml-3 w-[55px]"
-					src="/public/image/hand.svg"
+					src={withBase('image/hand.svg')}
 					alt=""
 				/>
 				<div
@@ -278,7 +283,7 @@ import DocumentIcon from '../icons/DocumentIcon.svelte';
 
 				<img
 					class="z-20 -mb-[10px] mt-[35px] w-[66px]"
-					src="/public/image/ballot.svg"
+					src={withBase('image/ballot.svg')}
 					alt=""
 				/>
 				<div

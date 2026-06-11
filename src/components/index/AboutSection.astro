@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 import SectionContainer from '../SectionContainer.astro';
+import { withBase } from '../../utils/url';
 
 const partnerDir = path.join(process.cwd(), 'public/partner');
 const partners = fs
@@ -11,7 +12,7 @@ const partners = fs
 	.sort()
 	.map((file) => ({
 		name: path.basename(file, path.extname(file)).replace(/[-_]/g, ' '),
-		src: `/partner/${encodeURIComponent(file)}`,
+		src: `partner/${encodeURIComponent(file)}`,
 	}));
 ---
 
@@ -23,7 +24,7 @@ const partners = fs
 
 	<div class="flex flex-col items-center gap-4">
 		<h3 class="heading-03">เครือข่ายประชาชนร่างรัฐธรรมนูญ</h3>
-		<img src="/public/image/conforall-logo.svg" alt="" class="w-[100px]" />
+		<img src={withBase('image/conforall-logo.svg')} alt="" class="w-[100px]" />
 		<p>
 			Conforall ชื่อภาษาไทยว่า กลุ่มประชาชนร่างรัฐธรรมนูญ
 			เกิดจากการรวมตัวของกลุ่มนักกิจกรรมและเอ็นจีโอหลายแห่งที่ต้องการเห็นประเทศไทยเป็นประชาธิปไตย
@@ -45,7 +46,11 @@ const partners = fs
 		<div class="flex flex-row flex-wrap justify-center gap-2">
 			{
 				partners.map(({ name, src }) => (
-					<img src={src} alt={name} class="h-11 w-11 object-contain" />
+					<img
+						src={withBase(src)}
+						alt={name}
+						class="h-11 w-11 object-contain"
+					/>
 				))
 			}
 		</div>
