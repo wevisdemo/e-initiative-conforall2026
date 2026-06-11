@@ -5,7 +5,12 @@ import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 initializeApp();
 
 const callableOptions = {
-	cors: [/localhost:\d+$/, /\.web\.app$/, /\.firebaseapp\.com$/],
+	cors: [
+		/localhost:\d+$/,
+		/\.web\.app$/,
+		/\.firebaseapp\.com$/,
+		/^https:\/\/wevisdemo\.github\.io$/,
+	],
 };
 
 interface FormDocument {
