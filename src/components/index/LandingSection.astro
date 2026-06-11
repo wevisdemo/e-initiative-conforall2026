@@ -9,9 +9,7 @@ import { countOfflineSignatures } from '../../utils/sheets';
 import Sharer from '../Sharer.svelte';
 import { withBase } from '../../utils/url';
 
-const documentCount =
-	(await countSubmittedDocuments()) +
-	(Config.sheets?.enableOfflineSignature ? await countOfflineSignatures() : 0);
+const documentCount = await countSubmittedDocuments();
 ---
 
 <SectionContainer

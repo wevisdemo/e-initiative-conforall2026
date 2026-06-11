@@ -7,6 +7,7 @@
 	import StepBlock from './StepBlock.svelte';
 	import PostAddress from './PostAddress.svelte';
 	import HeadquarterMap from './HeadquarterMap.svelte';
+	import { withBase } from '../../utils/url';
 
 	enum Channels {
 		Online = 'แบบออนไลน์',
@@ -75,8 +76,8 @@
 					>
 					<p>ชวนคนใกล้ๆ ตัวมาร่วมลงชื่อให้เต็มแผ่นเลยก็ได้</p>
 					<img
-						class="mx-auto"
-						src={Config.petition.offline.formExampleImageUrl}
+						class="mx-auto w-[212.13674926757812px] border border-base-300 md:w-[295.8817443847656px]"
+						src={withBase(Config.petition.offline.formExampleImageUrl)}
 						alt=""
 					/>
 				</StepBlock>

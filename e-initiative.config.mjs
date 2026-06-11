@@ -12,7 +12,7 @@ export default {
 		expectedSignatures: 50000,
 		offline: {
 			formUrl: 'petition-form.pdf',
-			formExampleImageUrl: 'https://placehold.co/280x397?text=example',
+			formExampleImageUrl: 'image/petition-form.jpg',
 			headquarter: {
 				name: 'ออฟฟิศ iLaw 099-678-6031',
 				address:
