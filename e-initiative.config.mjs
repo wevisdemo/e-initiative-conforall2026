@@ -7,25 +7,26 @@ export default {
 		previewImageUrl: 'https://wevisdemo.github.io/e-initiative-template/og.png',
 	},
 	petition: {
-		endDate: new Date('2030-10-10 GMT+7'),
-		expectedSignatures: 10000,
+		endDate: new Date('2026-06-30 GMT+7'),
+		expectedSignatures: 50000,
 		offline: {
 			formUrl: 'petition-form.pdf',
 			formExampleImageUrl: 'https://placehold.co/280x397?text=example',
 			headquarter: {
-				name: 'ชื่อสถานที่',
-				address: 'ที่อยู่ บ้านเลขที่ จังหวัด ...',
+				name: 'ออฟฟิศ iLaw 099-678-6031',
+				address:
+					'1111/3 บ้านกลางเมืองรัชดา-ลาดพร้าว ถ.ลาดพร้าว แขวงจันทรเกษม เขตจตุจักร กทม. 10900',
 				embedGoogleMapUrl:
-					'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3873.298251120154!2d100.56221937605227!3d13.881106394284691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e28323d10290b5%3A0x946e22bc8754445a!2sOffice%20of%20Election%20Commission%20of%20Thailand!5e0!3m2!1sen!2sth!4v1716288187164!5m2!1sen!2sth',
+					'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3874.5792700399415!2d100.57731679999999!3d13.8042179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29f78881156fb%3A0x7356cb8f9a29f043!2z4Lit4Liy4LiE4Liy4LijIEFMTCBSSVNFIChpTGF3KQ!5e0!3m2!1sen!2sth!4v1781152200705!5m2!1sen!2sth',
 			},
-			volunteer: {
-				registrationFormUrl: '#volunteer-register',
-				assetsUrl: '#asset',
-				contact: {
-					name: 'ชื่อช่องทาง',
-					url: '#contact',
-				},
-			},
+			// volunteer: {
+			// 	registrationFormUrl: '#volunteer-register',
+			// 	assetsUrl: '#asset',
+			// 	contact: {
+			// 		name: 'ชื่อช่องทาง',
+			// 		url: '#contact',
+			// 	},
+			// },
 		},
 	},
 	theme: {
@@ -42,19 +43,19 @@ export default {
 			info: '#F8EB54',
 		},
 		fonts: {
-			body: 'IBM Plex Sans Thai Looped',
-			'heading-fixed': 'IBM Plex Sans Thai',
-			'heading-responsive': 'IBM Plex Sans Thai Looped',
-			link: 'IBM Plex Sans Thai Looped',
+			body: 'Prompt',
+			'heading-fixed': 'Prompt',
+			'heading-responsive': 'Prompt',
+			link: 'Prompt',
 		},
 		stylesheets: [
-			'https://fonts.googleapis.com/css2?family=Noto+Sans+Thai+Looped:wght@100;200;300;400;500;600;700;800;900&family=Noto+Sans+Thai:wght@100..900&display=swap',
+			'https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400;500;600;700;800;900&display=swap',
 		],
 	},
 	sheets: {
 		id: '1PPl4bIKrNC68nc9sWDp7aolnTv0xiHZYQRlsvnRpAHc',
 		enableOfflineSignature: true,
-		enableLocations: true,
+		enableLocations: false,
 	},
 	renderer: {
 		templateFile: './public/petition-form.pdf',

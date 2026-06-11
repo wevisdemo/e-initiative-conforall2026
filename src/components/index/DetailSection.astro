@@ -1,0 +1,317 @@
+---
+import SectionContainer from '../SectionContainer.astro';
+import DocumentIcon from '../icons/DocumentIcon.svelte';
+---
+
+<SectionContainer
+	showMarquee
+	innerClass="flex w-full max-w-screen-md flex-col items-center gap-[50px] text-center"
+	landingHeight
+>
+	<div class="flex flex-col items-center gap-[15px]">
+		<h2 class="heading-responsive-02 text-secondary">
+			การจัดทำรัฐธรรมนูญใหม่<br />
+			ต้องเดินหน้าด้วยมือประชาชน
+		</h2>
+		<img
+			class="w-[220px] max-w-[305px] md:w-[305px]"
+			src="/public/image/detail-1.svg"
+			alt=""
+		/>
+		<div class="flex flex-col items-center gap-[5px]">
+			<p class="heading-responsive-01 text-black">สรุปใจความสำคัญของร่าง</p>
+			<p class="body-02-normal text-black">
+				เสนอแก้ไขรัฐธรรมนูญ ปี 2560<br />โดยเพิ่มหมวด 15/1
+				การจัดทำรัฐธรรมนูญฉบับใหม่ <b class="text-secondary">
+					เพื่อให้เกิดกระบวนการจัดทำรัฐธรรมนูญ<br />
+					ที่เป็นประชาธิปไตยและเน้นการมีส่วนร่วม<br /> ของประชาชนอย่างทั่วถึง ครอบคลุม
+					และหลากหลาย</b
+				> โดยมีรายละเอียดดังนี้
+			</p>
+		</div>
+	</div>
+
+	<div class="relative w-full max-w-[563px] pt-[22px]">
+		<div
+			class="absolute left-1/2 top-[-15px] z-10 flex -translate-x-1/2 items-center gap-[5px] whitespace-nowrap rounded-full bg-secondary px-[20px] py-[5px] text-white"
+		>
+			<span
+				class="heading-responsive-01 flex h-[38.568695068359375px] w-[38.568695068359375px] items-center justify-center rounded-full bg-base-100 text-secondary"
+				>1</span
+			>
+			<span class="heading-responsive-01">ต้นน้ำ</span>
+		</div>
+
+		<div
+			class="flex w-full flex-col items-center gap-[20px] rounded-[20px] bg-info px-[10px] py-10 md:px-[50px]"
+		>
+			<img class="w-[78px] md:w-[130px]" src="/public/image/start.svg" alt="" />
+			<div>
+				<h3 class="heading-responsive-03 text-secondary">การเลือกผู้ร่าง</h3>
+				<h3 class="heading-responsive-02 text-secondary">รัฐธรรมนูญฉบับใหม่</h3>
+			</div>
+
+			<div class="flex w-full flex-col items-center">
+				<div
+					class="flex w-full flex-col items-center gap-[5px] rounded-[15px] bg-primary px-[24px] py-[20px] text-base-100"
+				>
+					<p class="heading-responsive-01 text-secondary">
+						สภาร่างรัฐธรรมนูญ<br />(สสร.)ต้องมาจาก<br />การเลือกตั้ง
+					</p>
+					<p class="body-03-normal">แบ่งเป็น</p>
+				</div>
+
+				<div
+					class="my-[12px] h-0 w-0 border-x-[10px] border-t-[12px] border-x-transparent border-t-[#31d36b]"
+				>
+				</div>
+
+				<div class="grid w-full grid-cols-1 gap-[15px] sm:grid-cols-2">
+					<div class="flex flex-col items-center gap-[10px] rounded-[15px]">
+						<div
+							class="flex flex-col items-center rounded-[10px] bg-primary px-5 py-2.5"
+						>
+							<span
+								class="heading-01 w-full rounded-full bg-secondary px-[10px] py-[4px] text-base-100"
+								>สสร.แบบแบ่งเขต</span
+							>
+							<div class="flex flex-col text-secondary">
+								<p class="heading-responsive-02">150 คน</p>
+								<p class="body-03-semibold text-secondary">
+									เป็น “ตัวแทนระดับจังหวัด”
+								</p>
+							</div>
+						</div>
+
+						<p class="body-02-normal text-secondary">
+							คล้ายกับการเลือก สส.แบบแบ่งเขต
+						</p>
+						<p class="body-03-semibold text-secondary">
+							สร้างหลักประกันว่าประชาชน<br />จะมี <span class="text-primary"
+								>‘ตัวแทนในเชิงพื้นที่’</span
+							><br />ครอบคลุมทั่วทั้งประเทศ
+						</p>
+					</div>
+
+					<div class="flex flex-col items-center gap-[10px] rounded-[15px]">
+						<div
+							class="flex flex-col items-center rounded-[10px] bg-secondary px-5 py-2.5"
+						>
+							<span
+								class="heading-01 w-full rounded-full bg-primary px-[10px] py-[4px] text-secondary"
+								>สสร.แบบบัญชีรายชื่อ</span
+							>
+							<div class="flex flex-col text-base-100">
+								<p class="heading-responsive-02">150 คน</p>
+								<p class="body-03-semibold text-base-100">
+									เป็น “ตัวแทนระดับประเทศ”
+								</p>
+							</div>
+						</div>
+						<p class="body-02-normal text-secondary">
+							ให้ประชาชนเลือก “ทีมที่ใช่ที่สุด”<br />และนำคะแนนมาคำนวณที่นั่ง
+							สสร.<br />คล้าย สส.บัญชีรายชื่อ
+						</p>
+						<p class="body-03-semibold text-secondary">
+							สร้างหลักประกันว่าประชาชน<br />จะมี <span class="text-primary"
+								>‘ตัวแทนในเชิงประเด็น’</span
+							><br />ครอบคลุมทั่วทั้งประเทศ
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div
+		class="h-0 w-0 border-x-[25px] border-t-[22.6300048828125px] border-x-transparent border-t-[#2400A5]"
+	>
+	</div>
+
+	<div class="relative w-full max-w-[563px] pt-[22px]">
+		<div
+			class="absolute left-1/2 top-[-15px] z-10 flex -translate-x-1/2 items-center gap-[5px] whitespace-nowrap rounded-full bg-secondary px-[20px] py-[5px] text-white"
+		>
+			<span
+				class="heading-responsive-01 flex h-[38.568695068359375px] w-[38.568695068359375px] items-center justify-center rounded-full bg-base-100 text-secondary"
+				>2</span
+			>
+			<span class="heading-responsive-01">กลางน้ำ</span>
+		</div>
+
+		<div
+			class="flex w-full flex-col items-center gap-[20px] rounded-[20px] bg-info px-[10px] py-10 md:px-[50px]"
+		>
+			<img
+				class="w-[95px] md:w-[126px]"
+				src="/public/image/middle.svg"
+				alt=""
+			/>
+			<div>
+				<h3 class="heading-responsive-03 text-secondary">การยกร่าง</h3>
+				<h3 class="heading-responsive-02 text-secondary">รัฐธรรมนูญฉบับใหม่</h3>
+			</div>
+
+			<div class="flex w-full flex-col items-center gap-5">
+				<div
+					class="w-full rounded-[15px] bg-primary px-[24px] py-[38px] text-base-100"
+				>
+					<p class="heading-responsive-02 text-secondary">อำนาจ สสร.</p>
+				</div>
+
+				<div class="flex w-full flex-col items-center gap-5 px-4">
+					<div
+						class="flex w-full flex-col items-center gap-[5px] rounded-[10px] bg-base-100 px-[10px] py-[20px]"
+					>
+						<p class="heading-responsive-01 text-secondary">
+							ตั้งคณะกรรมาธิการ<br />
+							ยกร่างรัฐธรรมนูญ
+						</p>
+						<div
+							class="flex items-baseline gap-2.5 rounded-full bg-primary px-8 text-secondary"
+						>
+							<p class="body-03-semibold">จำนวนไม่เกิน</p>
+							<p class="text-[21px]">35</p>
+							<p class="heading-responsive-01">คน</p>
+						</div>
+						<p class="body-03-normal text-primary">เงื่อนไขดังต่อไปนี้</p>
+					</div>
+
+					<div
+						class="my-[12px] h-0 w-0 border-x-[10px] border-t-[12px] border-x-transparent border-t-[#31d36b]"
+					>
+					</div>
+
+					<div
+						class="flex w-full items-center justify-center gap-[5px] rounded-[10px] bg-base-100 py-[10px]"
+					>
+						<p class="body-03-normal text-secondary">
+							ต้องเลือกจาก<b class="body-03-semibold">สมาชิก สสร.</b>
+						</p>
+						<p
+							class="body-03-normal rounded-full bg-primary px-[10px] text-secondary"
+						>
+							ไม่น้อยกว่า <b class="body-03-semibold">25 คน</b>
+						</p>
+					</div>
+					<div
+						class="flex w-full items-center justify-center gap-[5px] rounded-[10px] bg-base-100 py-[10px]"
+					>
+						<p class="body-03-normal text-secondary">
+							เลือกจาก<b class="body-03-semibold">ผู้เชี่ยวชาญในด้านต่างๆ</b>
+						</p>
+						<p
+							class="body-03-normal rounded-full bg-primary px-[10px] text-secondary"
+						>
+							ได้ไม่เกิน <b class="body-03-semibold">10 คน</b>
+						</p>
+					</div>
+					<div
+						class="flex w-full items-center justify-center gap-[5px] rounded-[10px] bg-base-100 py-[10px]"
+					>
+						<p class="body-03-normal text-secondary">
+							ต้องคำนึงถึงความหลากหลาย<br />
+							และครอบคลุมเพื่อให้ทุกกลุ่มมีส่วนร่วม
+						</p>
+					</div>
+					<div
+						class="flex w-full items-center justify-center gap-[5px] rounded-[10px] bg-base-100 py-[10px]"
+					>
+						<img class="w-[15px]" src="/public/image/x.svg" alt="" />
+						<p class="body-03-semibold text-secondary">
+							ต้องไม่เกี่ยวข้องกับคณะรัฐประหาร
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div
+		class="h-0 w-0 border-x-[25px] border-t-[22.6300048828125px] border-x-transparent border-t-[#2400A5]"
+	>
+	</div>
+
+	<div class="relative w-full max-w-[563px] pt-[22px]">
+		<div
+			class="absolute left-1/2 top-[-15px] z-10 flex -translate-x-1/2 items-center gap-[5px] whitespace-nowrap rounded-full bg-secondary px-[20px] py-[5px] text-white"
+		>
+			<span
+				class="heading-responsive-01 flex h-[38.568695068359375px] w-[38.568695068359375px] items-center justify-center rounded-full bg-base-100 text-secondary"
+				>3</span
+			>
+			<span class="heading-responsive-01">ปลายน้ำ</span>
+		</div>
+
+		<div
+			class="flex w-full flex-col items-center gap-[20px] rounded-[20px] bg-info px-[10px] py-10 md:px-[50px]"
+		>
+			<img class="w-[60px]" src="/public/image/check.svg" alt="" />
+			<div>
+				<h3 class="heading-responsive-03 text-secondary">การให้ความเห็นชอบ</h3>
+				<h3 class="heading-responsive-02 text-secondary">
+					ร่างรัฐธรรมนูญฉบับใหม่
+				</h3>
+			</div>
+
+			<div class="flex w-full flex-col items-center">
+				<img
+					class="z-20 -mb-[12px] ml-3 w-[55px]"
+					src="/public/image/hand.svg"
+					alt=""
+				/>
+				<div
+					class="z-10 flex h-[80px] w-[80px] items-center justify-center rounded-full bg-secondary md:h-[120px] md:w-[120px]"
+				>
+					<p class="heading-responsive-01 text-base-100">ด่าน<br />ที่ 1</p>
+				</div>
+				<div
+					class="-mt-[15px] flex w-full flex-col items-center gap-[5px] rounded-[15px] bg-base-100 px-[15px] py-[25px]"
+				>
+					<p class="body-03-semibold text-primary">
+						ต้องได้รับเสียงเห็นชอบจาก สสร. ไม่น้อยกว่า 3 ใน 5
+					</p>
+					<p class="heading-responsive-01 text-secondary">
+						ไม่ต้องผ่าน สว. สีน้ำเงิน
+					</p>
+				</div>
+
+				<img
+					class="z-20 -mb-[10px] mt-[35px] w-[66px]"
+					src="/public/image/ballot.svg"
+					alt=""
+				/>
+				<div
+					class="z-10 flex h-[80px] w-[80px] items-center justify-center rounded-full bg-secondary md:h-[120px] md:w-[120px]"
+				>
+					<p class="heading-responsive-01 text-base-100">ด่าน<br />ที่ 2</p>
+				</div>
+				<div
+					class="-mt-[15px] flex w-full flex-col items-center gap-[5px] rounded-[15px] bg-base-100 px-[15px] py-[25px]"
+				>
+					<p class="body-03-semibold text-primary">
+						ต้องได้รับเสียงเห็นชอบจากการ<br />ออกเสียงประชามติโดยประชาชน
+					</p>
+					<p class="heading-responsive-01 text-secondary">
+						โดยยึดเสียงข้างมาก<br />ของผู้มาใช้สิทธิ
+					</p>
+				</div>
+			</div>
+
+			<p class="heading-responsive-01 text-center text-secondary">
+				หากไม่ผ่านด่านใดด่านหนึ่ง<br />
+				ให้เริ่มต้นกระบวนการจัดทำ<br />
+				รัฐธรรมนูญใหม่ตั้งแต่<br />
+				การเลือกตั้ง สสร.
+			</p>
+		</div>
+	</div>
+
+	<a
+		href="#"
+		target="_blank"
+		rel="noopener noreferrer"
+		class="btn btn-primary btn-block text-base-100"
+		>อ่านร่าง พรบ. ฉบับเต็ม <DocumentIcon /></a
+	>
+</SectionContainer>

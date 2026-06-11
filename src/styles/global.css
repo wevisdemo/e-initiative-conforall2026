@@ -1,3 +1,77 @@
 html {
 	scroll-behavior: smooth;
 }
+
+/* Color values mirror e-initiative.config.mjs theme.colors.
+   base-200 is auto-derived by DaisyUI (not in config). */
+
+.bg-primary {
+	background-color: #31d36b;
+}
+.bg-primary-focus {
+	background-color: #27b259;
+}
+.bg-secondary {
+	background-color: #2400a5;
+}
+.bg-secondary-focus {
+	background-color: #18006e;
+}
+.hover\:bg-secondary-focus:hover {
+	background-color: #18006e !important;
+}
+.bg-accent {
+	background-color: #8054ff;
+}
+.bg-accent-focus {
+	background-color: #5929e3;
+}
+.bg-neutral {
+	background-color: #000000;
+}
+.bg-base-100 {
+	background-color: #ffffff;
+}
+.bg-base-200 {
+	background-color: #f2f2f2;
+}
+.bg-base-300 {
+	background-color: #d4d4d4;
+}
+.bg-info {
+	background-color: #dcf4e3;
+}
+
+.text-primary {
+	color: #31d36b;
+}
+.text-primary-focus {
+	color: #27b259;
+}
+.text-secondary {
+	color: #2400a5;
+}
+.text-secondary-focus {
+	color: #18006e;
+}
+.text-accent {
+	color: #8054ff;
+}
+.text-accent-focus {
+	color: #5929e3;
+}
+.text-neutral {
+	color: #000000;
+}
+.text-base-100 {
+	color: #ffffff;
+}
+.text-base-200 {
+	color: #f2f2f2;
+}
+.text-base-300 {
+	color: #d4d4d4;
+}
+.text-info {
+	color: #dcf4e3;
+}

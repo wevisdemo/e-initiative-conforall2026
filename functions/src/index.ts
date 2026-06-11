@@ -4,6 +4,10 @@ import { getFirestore, FieldValue } from 'firebase-admin/firestore';
 
 initializeApp();
 
+const callableOptions = {
+	cors: [/localhost:\d+$/, /\.web\.app$/, /\.firebaseapp\.com$/],
+};
+
 interface FormDocument {
 	location: string;
 	citizenId: string;
@@ -55,7 +59,7 @@ function assertAdmin(request: { auth?: { token: { email?: string } } }) {
 	}
 }
 
-export const submitDocument = onCall(async (request) => {
+export const submitDocument = onCall(callableOptions, async (request) => {
 	const { document, turnstileToken } = request.data as SubmitRequest;
 
 	if (!turnstileToken) {
@@ -88,8 +92,11 @@ export const submitDocument = onCall(async (request) => {
 	const docRef = firestore.collection('documents').doc();
 	const userRef = firestore.collection('users').doc(uid);
 
+	const { 'cf-turnstile-response': _turnstileField, ...cleanDocument } =
+		document as FormDocument & { 'cf-turnstile-response'?: string };
+
 	batch.set(docRef, {
-		...document,
+		...cleanDocument,
 		uid,
 		timestamp: FieldValue.serverTimestamp(),
 	});
@@ -105,13 +112,13 @@ export const submitDocument = onCall(async (request) => {
 	return { success: true };
 });
 
-export const countDocuments = onCall(async () => {
+export const countDocuments = onCall(callableOptions, async () => {
 	const firestore = getFirestore();
 	const snapshot = await firestore.collection('documents').count().get();
 	return { count: snapshot.data().count };
 });
 
-export const listDocuments = onCall(async (request) => {
+export const listDocuments = onCall(callableOptions, async (request) => {
 	assertAdmin(request);
 
 	const { pageLimit, lastCitizenId } = request.data as {

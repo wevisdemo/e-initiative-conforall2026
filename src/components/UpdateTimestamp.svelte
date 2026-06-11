@@ -13,7 +13,7 @@
 			})
 			.split(' ');
 
-		updatedText = `วันที่ ${day} ${month} ${year.slice(2, 4)} เวลา ${time} น.`;
+		updatedText = `${day} ${month} ${year.slice(2, 4)} ${time}`;
 	});
 </script>
 
@@ -22,5 +22,5 @@
 		? 'block'
 		: 'invisible'} {$$restProps.class}"
 >
-	อัปเดตข้อมูลล่าสุด {updatedText}
+	อัปเดตข้อมูล {updatedText}
 </p>

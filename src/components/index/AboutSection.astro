@@ -1,5 +1,18 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
+
 import SectionContainer from '../SectionContainer.astro';
+
+const partnerDir = path.join(process.cwd(), 'public/partner');
+const partners = fs
+	.readdirSync(partnerDir)
+	.filter((file) => /\.(jpe?g|png|gif|webp|svg)$/i.test(file))
+	.sort()
+	.map((file) => ({
+		name: path.basename(file, path.extname(file)).replace(/[-_]/g, ' '),
+		src: `/partner/${encodeURIComponent(file)}`,
+	}));
 ---
 
 <SectionContainer
@@ -9,16 +22,20 @@ import SectionContainer from '../SectionContainer.astro';
 	<h2 class="heading-responsive-02">รู้จักเรา</h2>
 
 	<div class="flex flex-col items-center gap-4">
-		<h3 class="heading-03">ชื่อองค์กรหลัก</h3>
-		<img src="https://placehold.co/100x100" alt="" />
+		<h3 class="heading-03">เครือข่ายประชาชนร่างรัฐธรรมนูญ</h3>
+		<img src="/public/image/conforall-logo.svg" alt="" class="w-[100px]" />
 		<p>
-			Lorem ipsum dolor sit amet consectetur. Erat leo id neque tristique enim
-			elementum gravida. Ornare ultrices ac in a turpis ut. Lacus sit mollis
-			molestie est aliquet porta cursus. Suscipit gravida vivamus lacus
-			faucibus. Diam leo id proin semper amet consectetur vel. Integer amet dui
-			dui fringilla in nulla venenatis etiam sem. Adipiscing cras mattis
-			interdum nec mi fermentum. Vulputate integer et commodo arcu consectetur.
-			Ultrices pharetra proin posuere sed vulputate tempus aliquam.
+			Conforall ชื่อภาษาไทยว่า กลุ่มประชาชนร่างรัฐธรรมนูญ
+			เกิดจากการรวมตัวของกลุ่มนักกิจกรรมและเอ็นจีโอหลายแห่งที่ต้องการเห็นประเทศไทยเป็นประชาธิปไตย
+			เมื่อปี 2566 เป็นเจ้าภาพรวบรวมรายชื่อประชาชนกว่า 211,904
+			รายชื่อเสนอให้ทำประชามติเพื่อถามประชาชนว่าเห็นชอบหรือไม่ให้มีการจัดทำรัฐธรรมนูญฉบับใหม่
+			และก่อนวันที่ 8 กุมภาพันธ์ 2569 ได้ทำกิจกรรมรณรงค์ให้ประชาชนลงประชามติ
+			&quot;เห็นชอบ&quot; ให้มีการจัดทำรัฐธรรมนูญฉบับใหม่
+			<br />
+			<br />
+			Conforall ชื่อนี้มีความหมาย เพราะเราต้องการเห็นกระบวนการจัดทำรัฐธรรมนูญฉบับใหม่ที่รวมทุกคน
+			ทุกเสียง เพื่อให้ได้กติกาของประเทศเพื่อทุกคนที่มีความต้องการหลากหลาย มีความเชื่อหลากหลาย
+			เรารู้ว่า มีคนหลายกลุ่มอาจไม่ได้คิดเห็นเหมือนพวกเรา ซึ่งเราก็อยากให้รัฐธรรมนูญใหม่เป็นไปเพื่อคนกลุ่มนั้นด้วย
 		</p>
 	</div>
 
@@ -26,33 +43,11 @@ import SectionContainer from '../SectionContainer.astro';
 		<h3 class="heading-03">Partners</h3>
 
 		<div class="flex flex-row flex-wrap justify-center gap-2">
-			<a href="/#" target="_blank" rel="noopener noreferrer">
-				<img src="https://placehold.co/44x44" alt="org name" />
-			</a>
-			<a href="/#" target="_blank" rel="noopener noreferrer">
-				<img src="https://placehold.co/44x44" alt="org name" />
-			</a>
-			<a href="/#" target="_blank" rel="noopener noreferrer">
-				<img src="https://placehold.co/44x44" alt="org name" />
-			</a>
-			<a href="/#" target="_blank" rel="noopener noreferrer">
-				<img src="https://placehold.co/44x44" alt="org name" />
-			</a>
-			<a href="/#" target="_blank" rel="noopener noreferrer">
-				<img src="https://placehold.co/44x44" alt="org name" />
-			</a>
-			<a href="/#" target="_blank" rel="noopener noreferrer">
-				<img src="https://placehold.co/44x44" alt="org name" />
-			</a>
-			<a href="/#" target="_blank" rel="noopener noreferrer">
-				<img src="https://placehold.co/44x44" alt="org name" />
-			</a>
-			<a href="/#" target="_blank" rel="noopener noreferrer">
-				<img src="https://placehold.co/44x44" alt="org name" />
-			</a>
-			<a href="/#" target="_blank" rel="noopener noreferrer">
-				<img src="https://placehold.co/44x44" alt="org name" />
-			</a>
+			{
+				partners.map(({ name, src }) => (
+					<img src={src} alt={name} class="h-11 w-11 object-contain" />
+				))
+			}
 		</div>
 	</div>
 </SectionContainer>

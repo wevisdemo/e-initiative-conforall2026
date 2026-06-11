@@ -33,7 +33,7 @@
 			? 'justify-center'
 			: 'justify-between'}"
 	>
-		<div class="flex items-center gap-3">
+		<div class="flex items-center gap-3 text-secondary">
 			<span class="heading-03 hidden md:block">แชร์ให้เพื่อน</span>
 			<Sharer />
 		</div>
@@ -41,7 +41,7 @@
 			<div class="max-w-40 flex-1 md:max-w-60">
 				<a
 					href="#sign"
-					class="heading-03 btn btn-primary btn-block font-bold text-base-100"
+					class="heading-03 btn btn-block border-none bg-secondary text-white hover:bg-secondary-focus"
 				>
 					ลงชื่อเลย <PenIcon />
 				</a>

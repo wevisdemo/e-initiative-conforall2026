@@ -91,7 +91,7 @@
 			id="location"
 			type="string"
 			name="location"
-			class="input rounded-sm bg-base-200 {messages ? 'input-error' : ''}"
+			class="input rounded-lg bg-base-200 {messages ? 'input-error' : ''}"
 			disabled={isLoading}
 		/>
 		<div class="label">
@@ -108,7 +108,7 @@
 			id="citizenId"
 			type="string"
 			name="citizenId"
-			class="input rounded-sm bg-base-200 {messages ? 'input-error' : ''}"
+			class="input rounded-lg bg-base-200 {messages ? 'input-error' : ''}"
 			disabled={isLoading}
 		/>
 		<div class="label">
@@ -124,7 +124,7 @@
 			</label>
 			<select
 				id="prefix"
-				class="select max-w-xs rounded-sm bg-base-200"
+				class="select max-w-xs rounded-lg bg-base-200"
 				disabled={isLoading}
 				name="prefix"
 			>
@@ -143,7 +143,7 @@
 					id="firstname"
 					type="text"
 					name="firstname"
-					class="input w-full rounded-sm bg-base-200 {messages
+					class="input w-full rounded-lg bg-base-200 {messages
 						? 'input-error'
 						: ''}"
 					disabled={isLoading}
@@ -164,7 +164,7 @@
 			id="lastname"
 			type="text"
 			name="lastname"
-			class="input rounded-sm bg-base-200 {messages ? 'input-error' : ''}"
+			class="input rounded-lg bg-base-200 {messages ? 'input-error' : ''}"
 			disabled={isLoading}
 		/>
 		<div class="label">
@@ -179,7 +179,7 @@
 				<span class="body-03 label-text font-bold">ลงลายมือชื่อ*</span>
 			</div>
 			<div
-				class="relative rounded-sm bg-base-200 {messages
+				class="relative rounded-lg bg-base-200 {messages
 					? 'border border-error'
 					: ''}"
 			>

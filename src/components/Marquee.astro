@@ -1,0 +1,71 @@
+---
+interface Props {
+	src?: string;
+	speed?: string;
+	height?: string;
+	class?: string;
+}
+
+const {
+	src = '/public/image/marquee_animation.svg',
+	speed = '20s',
+	height = '50px',
+	class: className = '',
+} = Astro.props;
+---
+
+<div
+	class:list={['marquee', className]}
+	aria-hidden="true"
+	style={`--marquee-speed:${speed}; --marquee-height:${height}`}
+>
+	<div class="marquee__track">
+		<img class="marquee__img" src={src} alt="" />
+		<img class="marquee__img" src={src} alt="" />
+	</div>
+</div>
+
+<style>
+	.marquee {
+		width: 100%;
+		overflow: hidden;
+	}
+
+	.marquee__track {
+		display: flex;
+		width: max-content;
+		animation: marquee-scroll var(--marquee-speed, 20s) linear infinite;
+	}
+
+	.marquee:hover .marquee__track {
+		animation-play-state: paused;
+	}
+
+	.marquee__img {
+		height: 30px;
+		width: auto;
+		display: block;
+		flex: none;
+	}
+
+	@media (min-width: 768px) {
+		.marquee__img {
+			height: var(--marquee-height, 50px);
+		}
+	}
+
+	@keyframes marquee-scroll {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-50%);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.marquee__track {
+			animation: none;
+		}
+	}
+</style>
