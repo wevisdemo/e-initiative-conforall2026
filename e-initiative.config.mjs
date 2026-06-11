@@ -1,10 +1,11 @@
 /** @type {import('./src/models/config').EInitiativeConfig} */
 export default {
 	metadata: {
-		title: 'E-Initiative Template',
-		description: 'Customizable template for Thailand E-initiative',
-		siteUrl: 'https://wevisdemo.github.io/e-initiative-template',
-		previewImageUrl: 'https://wevisdemo.github.io/e-initiative-template/og.png',
+		title: 'E-Initiative Conforall 2026',
+		description: 'E-Initiative Conforall 2026',
+		siteUrl: 'https://wevisdemo.github.io/e-initiative-conforall2026/',
+		previewImageUrl:
+			'https://wevisdemo.github.io/e-initiative-conforall2026/og.png',
 	},
 	petition: {
 		endDate: new Date('2026-06-30 GMT+7'),
