@@ -1,8 +1,8 @@
 /** @type {import('./src/models/config').EInitiativeConfig} */
 export default {
 	metadata: {
-		title: 'E-Initiative Conforall 2026',
-		description: 'E-Initiative Conforall 2026',
+		title: 'เขียนใหม่ทั้งฉบับ เลือกตั้ง100%',
+		description: 'ต้องการ 50,000 ชื่อ เสนอคำถามประชามติ สู่รัฐธรรมนูญใหม่',
 		siteUrl: 'https://wevisdemo.github.io/e-initiative-conforall2026/',
 		previewImageUrl:
 			'https://wevisdemo.github.io/e-initiative-conforall2026/og.png',
