@@ -87,7 +87,7 @@
 							.name}
 						<span class="text-error"
 							>ภายในวันที่ {Config.petition.endDate.toLocaleDateString(
-								'TH-th',
+								'th-TH',
 								{ dateStyle: 'medium' },
 							)}</span
 						></svelte:fragment

@@ -7,7 +7,7 @@
 
 	onMount(() => {
 		const [day, month, year, time] = new Date(date)
-			.toLocaleString('TH-th', {
+			.toLocaleString('th-TH', {
 				dateStyle: 'medium',
 				timeStyle: 'short',
 			})

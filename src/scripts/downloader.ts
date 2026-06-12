@@ -127,7 +127,7 @@ function formatSignatoriesWithSignature({
 	signature,
 }: (typeof signatories)[number]) {
 	const [day, month, year] = date
-		.toLocaleDateString('TH-th', { dateStyle: 'long' })
+		.toLocaleDateString('th-TH', { dateStyle: 'long' })
 		.split(' ');
 
 	return {
