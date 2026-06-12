@@ -3,9 +3,8 @@ export default {
 	metadata: {
 		title: 'เขียนใหม่ทั้งฉบับ เลือกตั้ง100%',
 		description: 'ต้องการ 50,000 ชื่อ เสนอคำถามประชามติ สู่รัฐธรรมนูญใหม่',
-		siteUrl: 'https://wevisdemo.github.io/e-initiative-conforall2026/',
-		previewImageUrl:
-			'https://wevisdemo.github.io/e-initiative-conforall2026/og.png',
+		siteUrl: 'https://conforall.com/',
+		previewImageUrl: 'https://conforall.com/og.png',
 	},
 	petition: {
 		endDate: new Date('2026-06-30T00:00:00+07:00'),
