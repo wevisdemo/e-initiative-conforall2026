@@ -94,11 +94,20 @@ const documentCount = await countSubmittedDocuments();
 				}
 			</div>
 
-			<a class="heading-03 btn btn-link btn-block hover:text-accent" href="#why"
-				>ทำไมต้องลงชื่อ</a
-			>
+			<div class="mt-3 flex flex-col gap-2">
+				<a
+					class="heading-03 text-accent underline hover:text-accent-focus"
+					href="#why">ทำไมต้องลงชื่อ</a
+				>
+				<a
+					class="heading-03 text-accent underline hover:text-accent-focus"
+					href="https://drive.google.com/drive/folders/1ngDOTvVdF3vaXfHX_ozQ2lvRaCGXWamD?usp=drive_link"
+					target="_blank"
+					rel="noopener noreferrer">ดาวน์โหลดไฟล์รณรงค์</a
+				>
+			</div>
 
-			<div class="flex items-center justify-center gap-3 text-secondary">
+			<div class="mt-3 flex items-center justify-center gap-3 text-secondary">
 				<span class="body-01">แชร์</span>
 				<Sharer />
 			</div>

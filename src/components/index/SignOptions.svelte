@@ -74,7 +74,7 @@
 					<svelte:fragment slot="heading"
 						>2. ลงลายมือชื่อบนแบบฟอร์ม</svelte:fragment
 					>
-					<p>ชวนคนใกล้ๆ ตัวมาร่วมลงชื่อให้เต็มแผ่นเลยก็ได้</p>
+					<p>ชวนคนใกล้ๆ ตัวมาร่วมลงชื่อกันได้ จัดไปคนละแผ่น คนละชื่อ</p>
 					<img
 						class="mx-auto w-[212.13674926757812px] border border-base-300 md:w-[295.8817443847656px]"
 						src={withBase(Config.petition.offline.formExampleImageUrl)}
