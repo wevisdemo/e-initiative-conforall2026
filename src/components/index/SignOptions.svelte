@@ -85,11 +85,7 @@
 					<svelte:fragment slot="heading"
 						>3. ส่งเอกสารรวบรวมรายชื่อมายัง {Config.petition.offline.headquarter
 							.name}
-						<span class="text-error"
-							>ภายในวันที่ {Config.petition.endDate.toLocaleDateString(
-								'th-TH',
-								{ dateStyle: 'medium' },
-							)}</span
+						<span class="text-error">ภายในวันที่ 30 มิ.ย. 2569</span
 						></svelte:fragment
 					>
 					<div class="space-y-2">
