@@ -8,7 +8,7 @@ on:
       - '**/*.d.ts'
       - 'src/scripts/**'
   schedule:
-    - cron: '0 0 * * *' # Rebuild every 00:00 GMT to refresh signature count from Firebase
+    - cron: '0 * * * *' # Rebuild every hour to refresh signature count from Firebase
   workflow_dispatch:
 
 permissions:
