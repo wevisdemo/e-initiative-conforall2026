@@ -45,10 +45,9 @@ const documentCount = await countSubmittedDocuments();
 					<p class="heading-responsive-02 text-secondary">
 						ลงแล้ว {documentCount.toLocaleString()} คน
 					</p>
-					<p class="body-03-normal text-secondary">
-						<!-- {dayElapsed > 0 && <>เหลือเวลาอีก {dayElapsed} วัน</>} -->
+					<!-- <p class="body-03-normal text-secondary">
 						ภายใน 30 มิ.ย. 2569
-					</p>
+					</p> -->
 					<UpdateTimestamp client:load date={new Date()} />
 				</div>
 				{
