@@ -7,7 +7,7 @@ export default {
 		previewImageUrl: 'https://conforall.com/og.png',
 	},
 	petition: {
-		endDate: new Date('2026-06-30T00:00:00+07:00'),
+		// endDate: new Date('2026-06-30T00:00:00+07:00'),
 		expectedSignatures: 50000,
 		offline: {
 			formUrl: 'petition-form.pdf',
