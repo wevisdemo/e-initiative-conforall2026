@@ -1,6 +1,6 @@
 {
 	"projects": {
 		"default": "demo-e-initiative-template",
-		"prod": "e-initiative-template"
+		"prod": "e-initiative-recon2026"
 	}
 }
