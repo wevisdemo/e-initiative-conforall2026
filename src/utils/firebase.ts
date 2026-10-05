@@ -23,13 +23,19 @@ try {
 
 const auth = getAuth();
 const functions = getFunctions(app);
+const isEmulator =
+	import.meta.env?.DEV || process.env?.NODE_ENV === 'development';
 
-if (import.meta.env?.DEV || process.env?.NODE_ENV === 'development') {
+if (isEmulator) {
 	connectAuthEmulator(
 		auth,
 		`http://127.0.0.1:${FirebaseOptions.emulators.auth.port}`,
 	);
-	connectFunctionsEmulator(functions, '127.0.0.1', 9092);
+	connectFunctionsEmulator(
+		functions,
+		'127.0.0.1',
+		FirebaseOptions.emulators.functions.port,
+	);
 }
 
 export const signIn = (email: string, password: string) =>
@@ -68,13 +74,24 @@ export async function getDocuments(
 	pageLimit: number,
 	lastCitizenId?: string,
 ): Promise<SubmittedDocument[]> {
-	const listFn = httpsCallable<
-		{ pageLimit: number; lastCitizenId?: string },
-		{ documents: SubmittedDocument[] }
-	>(functions, 'listDocuments');
+	// httpsCallable retains every response in memory (Promise.race with the never-settling cancelAllRequests), so call the endpoint directly
+	const { projectId } = app.options;
+	const url = isEmulator
+		? `http://127.0.0.1:${FirebaseOptions.emulators.functions.port}/${projectId}/us-central1/listDocuments`
+		: `https://us-central1-${projectId}.cloudfunctions.net/listDocuments`;
 
-	const result = await listFn({ pageLimit, lastCitizenId });
-	return result.data.documents;
+	const res = await fetch(url, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${await auth.currentUser?.getIdToken()}`,
+		},
+		body: JSON.stringify({ data: { pageLimit, lastCitizenId } }),
+	});
+	const body = await res.json();
+
+	if (!res.ok) throw new Error(body.error?.message ?? res.statusText);
+	return body.result.documents;
 }
 
 function getEnv(key: string) {

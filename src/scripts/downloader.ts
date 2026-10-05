@@ -3,7 +3,7 @@ import {
 	readdirSync,
 	readFileSync,
 	mkdirSync,
-	existsSync,
+	rmSync,
 } from 'fs';
 import { signIn, getDocuments } from '../utils/firebase';
 import type { SubmittedDocument } from '../models/document';
@@ -32,8 +32,8 @@ if (!adminEmail || !adminPassword) {
 await signIn(adminEmail, adminPassword);
 console.log('Retrieving documents...');
 
-if (!existsSync(OUTPUT_DIR)) mkdirSync(OUTPUT_DIR);
-if (!existsSync(TEMP_DIR)) mkdirSync(TEMP_DIR);
+rmSync(TEMP_DIR, { recursive: true, force: true });
+mkdirSync(TEMP_DIR, { recursive: true });
 
 do {
 	const documents = await getDocuments(PAGE_LIMIT, lastCitizenId);
@@ -53,12 +53,17 @@ do {
 	isCompleted = documents.length < PAGE_LIMIT;
 } while (!isCompleted);
 
-const documents = readdirSync(TEMP_DIR)
-	.filter((path) => path.endsWith('.json'))
-	.reduce<SubmittedDocument[]>((list, path) => {
-		list.push(...JSON.parse(readFileSync(`${TEMP_DIR}/${path}`, 'utf-8')));
-		return list;
-	}, []);
+const batchFiles = readdirSync(TEMP_DIR).filter((path) =>
+	path.endsWith('.json'),
+);
+
+// Signatures are left on disk and referenced by `ref`, all of them don't fit in the heap
+const documents = batchFiles.flatMap((path) =>
+	readBatch(path).map(({ signature, ...document }, index) => ({
+		...document,
+		ref: `${path}:${index}`,
+	})),
+);
 
 console.log(`Original data has ${documents.length} rows`);
 
@@ -73,50 +78,72 @@ const signatories = documents
 	.filter(checkDuplicatedKeys(['citizenId', 'firstname', 'lastname']))
 	.sort((z, a) => a.timestamp.seconds - z.timestamp.seconds)
 	.map(
-		({
-			prefix,
-			firstname,
-			lastname,
-			timestamp,
-			location,
-			citizenId,
-			signature,
-		}) => {
+		({ prefix, firstname, lastname, timestamp, location, citizenId, ref }) => {
 			return {
 				citizenId,
 				fullname: `${prefix.trim()} ${firstname.trim()} ${lastname.trim()}`,
 				location: location.trim(),
 				date: new Date(timestamp.seconds * 1000),
-				signature,
+				ref,
 			};
 		},
 	);
 
 writeFileSync(
 	`${OUTPUT_DIR}/signatories.csv`,
-	csvFormat(signatories.map(({ signature, ...rest }) => rest)),
+	csvFormat(signatories.map(({ ref, ...rest }) => rest)),
 );
 
 console.log(`Got ${signatories.length} signatories after cleaning`);
 
 for (let i = 0; i * WITH_SIGNATURE_MAX_ROW < signatories.length; i++) {
+	const rows = signatories.slice(
+		i * WITH_SIGNATURE_MAX_ROW,
+		(i + 1) * WITH_SIGNATURE_MAX_ROW,
+	);
+	const refs = new Set(rows.map(({ ref }) => ref));
+	const signatures = new Map<string, string>();
+
+	// ponytail: re-reads every batch file per output file (~10s each), write signatures into per-output temp files if it gets too slow
+	for (const path of batchFiles) {
+		readBatch(path).forEach(({ signature }, index) => {
+			const ref = `${path}:${index}`;
+			if (refs.has(ref)) signatures.set(ref, signature);
+		});
+	}
+
 	writeFileSync(
 		`${OUTPUT_DIR}/${SIGNATURE_OUTPUT_PREFIX}${i + 1}.csv`,
 		csvFormat(
-			signatories
-				.slice(i * WITH_SIGNATURE_MAX_ROW, (i + 1) * WITH_SIGNATURE_MAX_ROW)
-				.map(formatSignatoriesWithSignature),
+			rows.map(({ ref, ...row }) =>
+				formatSignatoriesWithSignature({
+					...row,
+					signature: signatures.get(ref)!,
+				}),
+			),
 		),
 	);
+
+	console.log(`Write ${SIGNATURE_OUTPUT_PREFIX}${i + 1}.csv`);
 }
 
 console.log(`Write CSV files into ${OUTPUT_DIR} successfully!`);
 
 process.exit(0);
 
+function readBatch(path: string): SubmittedDocument[] {
+	return JSON.parse(readFileSync(`${TEMP_DIR}/${path}`, 'utf-8'));
+}
+
 function checkDuplicatedKeys<T extends Object>(keys: (keyof T)[]) {
-	return (obj1: T, i: number, arr: T[]) =>
-		arr.findIndex((obj2) => keys.every((key) => obj2[key] === obj1[key])) === i;
+	const seen = new Set<string>();
+
+	return (obj: T) => {
+		const key = JSON.stringify(keys.map((key) => obj[key]));
+		if (seen.has(key)) return false;
+		seen.add(key);
+		return true;
+	};
 }
 
 function formatSignatoriesWithSignature({
@@ -125,7 +152,13 @@ function formatSignatoriesWithSignature({
 	location,
 	date,
 	signature,
-}: (typeof signatories)[number]) {
+}: {
+	citizenId: string;
+	fullname: string;
+	location: string;
+	date: Date;
+	signature: string;
+}) {
 	const [day, month, year] = date
 		.toLocaleDateString('th-TH', { dateStyle: 'long' })
 		.split(' ');
